@@ -7,13 +7,19 @@ class Test(QWidget):
         QWidget.__init__(self)
         self.setWindowTitle("IHM")
         self.setMinimumSize(500, 300)
-        self.layout = QHBoxLayout()
+        self.layout = QVBoxLayout()
         self.compteur = 0
         self.label = "Changer mon texte ! "
         self.button = QPushButton(self.label)
 
+        self.notificationPanel = QTextEdit("Le nombre de clic va être affiché ici")
+
+
         self.layout.addWidget(self.button)
+        self.layout.addWidget(self.notificationPanel)
         self.button.clicked.connect(self.ButtonClicked)
+        self.layout.addWidget(self.notificationPanel)
+
         self.setLayout(self.layout)
 
 
@@ -23,7 +29,10 @@ class Test(QWidget):
     def ButtonClicked(self):
         self.compteur += 1
         newlabel = str(self.compteur)
-        self.button.setText("Click " + newlabel)
+        self.notificationPanel.setText("Clic " + newlabel)
+        self.button.setText("Clic " + newlabel)
+
+
 
 
 if __name__ == "__main__":
