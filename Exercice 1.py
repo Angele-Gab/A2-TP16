@@ -24,7 +24,6 @@ class Test (QWidget) :
 
     def buttonClicked(self):
         self.label.setText(choice(self.liste))
-        self.hide()
         self.show()
 
 if __name__ == "__main__":
