@@ -11,14 +11,20 @@ class Test(QWidget):
         self.layout = QHBoxLayout()
         self.Barre = QProgressBar()
         self.Curseur = QSlider(Qt.Vertical)
+
         self.layout.addWidget(self.Barre)
         self.layout.addWidget(self.Curseur)
-        self.Curseur.valueChanged.connect(self.Changeprogressbar)
+
+        self.Curseur.valueChanged.connect(self.Signal)
+
         self.setLayout(self.layout)
 
-    def Changeprogressbar(self):
+    def Signal(self):
+        self.Slot(self.Curseur.value())
+        self.show()
+
+    def Slot(self,value):
         self.Barre.setValue(self.Curseur.value())
-        return
 
 if __name__ == "__main__":
     app = QApplication([])
